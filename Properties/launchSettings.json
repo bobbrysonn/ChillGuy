@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ChillGuy (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ChillGuy (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
