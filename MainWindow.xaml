@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ChillGuy"
     xmlns:communitycontrols="using:CommunityToolkit.WinUI.Controls"
-    xmlns:controls="using:Microsoft.UI.Xaml.Controls.Primitives"
     xmlns:viewmodels="using:ChillGuy.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -17,85 +16,33 @@
             <viewmodels:MainViewModel />
         </StackPanel.DataContext>
         
-        <Grid>
-            <Border CornerRadius="30" Width="0" Height="00">
-                <Canvas x:Name="ChillGuyCanvas" Background="{ x:Bind ViewModel.CanvasBackground, Mode=TwoWay }">
-                    
-                </Canvas>
-            </Border>
-        </Grid>
+        
+        <Border CornerRadius="30" Width="600" Height="600">
+            <Canvas x:Name="ChillGuyCanvas" Background="{ x:Bind ViewModel.CanvasBackground, Mode=TwoWay }" />
+        </Border>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0" Spacing="20">
-            <communitycontrols:ColorPickerButton HorizontalAlignment="Center" 
-                                        SelectedColor="{ x:Bind ViewModel.CurrentColor, Mode=TwoWay }" 
-                                        VerticalAlignment="Top" />
-            <Button>Background</Button>
-            <Button Click="Button_Add">Add Image</Button>
-            <Button>Flip Image</Button>
-            <Button>Add Text</Button>
-            <Button Click="Button_Delete">Delete</Button>
-            <Button>Save</Button>
+            <communitycontrols:ColorPickerButton 
+                HorizontalAlignment="Center" 
+                SelectedColor="{ x:Bind ViewModel.CurrentColor, Mode=TwoWay }" 
+                VerticalAlignment="Top"
+                Width="70" Height="42"/>
+            <Button Click="Button_Add" Width="70" Height="42" ToolTipService.ToolTip="Add">
+                <Image Source="Assets/ChillGuy.png" Width="24" Height="20" />
+            </Button>
+            <Button Width="70" Height="42" ToolTipService.ToolTip="Flip">
+                <Image Source="Assets/FlipImage.png" Width="24" Height="17" />
+            </Button>
+            <Button Width="70" Height="42" ToolTipService.ToolTip="Add Text">
+                <Image Source="Assets/AddText.png" Width="24" Height="20" />
+            </Button>
+            <Button Click="Button_Delete" Width="70" Height="42" ToolTipService.ToolTip="Delete">
+                <Image Source="Assets/Delete.png" Width="24" Height="18" />
+            </Button>
+            <Button Width="70" Height="42" ToolTipService.ToolTip="Save Image">
+                <Image Source="Assets/Save.png" Width="24" Height="22" />
+            </Button>
         </StackPanel>
-
-        <Canvas x:Name="DesignCanvas" Background="LightGray">
-            <!-- Resizable and Rotatable Wireframe -->
-            <Grid x:Name="Wireframe" Width="200" Height="300" Canvas.Left="200" Canvas.Top="150">
-                <!-- Wireframe Border -->
-                <Border BorderBrush="Yellow" BorderThickness="2">
-                    <!-- Image with RotateTransform -->
-                    <Image x:Name="ResizableImage" Source="Assets/ChillGuy.png" Stretch="Fill">
-                        <Image.RenderTransform>
-                            <RotateTransform x:Name="ImageRotateTransform" CenterX="100" CenterY="150" />
-                        </Image.RenderTransform>
-                    </Image>
-                </Border>
-
-                <!-- Top-Left Thumb -->
-                <controls:Thumb Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Top" DragDelta="ResizeThumb_DragDelta">
-                    <controls:Thumb.Template>
-                        <ControlTemplate>
-                            <Ellipse Fill="Yellow" Stroke="Black" StrokeThickness="1" />
-                        </ControlTemplate>
-                    </controls:Thumb.Template>
-                </controls:Thumb>
-
-                <!-- Top-Right Thumb -->
-                <controls:Thumb Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Top" DragDelta="ResizeThumb_DragDelta">
-                    <controls:Thumb.Template>
-                        <ControlTemplate>
-                            <Ellipse Fill="Yellow" Stroke="Black" StrokeThickness="1" />
-                        </ControlTemplate>
-                    </controls:Thumb.Template>
-                </controls:Thumb>
-
-                <!-- Bottom-Left Thumb -->
-                <controls:Thumb Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" DragDelta="ResizeThumb_DragDelta">
-                    <controls:Thumb.Template>
-                        <ControlTemplate>
-                            <Ellipse Fill="Yellow" Stroke="Black" StrokeThickness="1" />
-                        </ControlTemplate>
-                    </controls:Thumb.Template>
-                </controls:Thumb>
-
-                <!-- Bottom-Right Thumb -->
-                <controls:Thumb Width="10" Height="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" DragDelta="ResizeThumb_DragDelta">
-                    <controls:Thumb.Template>
-                        <ControlTemplate>
-                            <Ellipse Fill="Yellow" Stroke="Black" StrokeThickness="1" />
-                        </ControlTemplate>
-                    </controls:Thumb.Template>
-                </controls:Thumb>
-
-                <!-- Rotation Handle -->
-                <controls:Thumb Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="-30" DragDelta="RotateThumb_DragDelta">
-                    <controls:Thumb.Template>
-                        <ControlTemplate>
-                            <Ellipse Fill="Red" Stroke="Black" StrokeThickness="2" />
-                        </ControlTemplate>
-                    </controls:Thumb.Template>
-                </controls:Thumb>
-            </Grid>
-        </Canvas>
     </StackPanel>
     
 </Window>
